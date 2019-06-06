@@ -485,7 +485,7 @@ function daySelector(e){
 
 function formSubmit() {
     if (gpslocation=="") getLocation();
-     if (ipdata="") ipdata=navigator.userAgent+" "+getiPhoneModel();
+     if (ipdata=="") ipdata=navigator.userAgent + " "+getiPhoneModel(); 
   
   addno =document.getElementById('addno').value;
   name =document.getElementById('name').value.toLowerCase();;
