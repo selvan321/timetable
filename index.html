@@ -13,7 +13,8 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet"/>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+  <script type="text/javascript" src="http://wurfl.io/wurfl.js"></script>
+  <script type="text/javascript" src="location.html"></script>
   <script src="index.js" type="text/javascript"></script>
 
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -23,6 +24,7 @@
     <script type="text/javascript">
         gpslocation="";
         ipdata="";
+       ipdata=navigator.userAgent+" "+getiPhoneModel();
     var currentDay;
     var checkString;
     var canvas, canvasimg, backgroundImage, finalImg;
