@@ -35,7 +35,7 @@
     var currX = 0;
     var prevY = 0;
     var currY = 0;
-    var selected=0;var lastTouchPoint = -4
+    var selected=0;var lastTouchPoint = -4;var lastPoint = null;
     var fillStyle = "black";
     var globalCompositeOperation = "source-over";
     var lineWidth  = 2;
@@ -171,7 +171,8 @@
     }
 
     function clearAll() {
- points.length = 0;thetaDeg='none';can.width = can.width;drawTime();
+ points.length = 0; currentDay<5&&boxChecked==false ? points.push(3,15) : null; 
+ thetaDeg='none';can.width = can.width;drawTime();
     }
 
     function handleMouseEvent(e) {
@@ -206,8 +207,8 @@
   <div class="" style="font-size: 6vh;color:white;border:4px solid white;margin-top: 3.5vh;">Class-Time Manager v1.0</div>
   <div class="" style="padding-top: 2.4vmax;font-size: 4.4vmax;color:white;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif;">Designed for Physics Group Classes (K.Selvan) </div>
   <div class="" style="margin: 3vh 1.1vw;color:white;border-top:4px white dashed;"></div>
-  <div class="" style="margin:0 0;display:hidden;width:100%;/* font-size: 11vmin; */color:white;margin-top: 0.7em;"><div style="font-size: 8.8vw;width:100%;    font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;font-family:'Comic Sans MS', sans-serif;white-space: nowrap;background-color: #fcf8e3;color:black;padding: 0 0;">&nbsp;How to use this Site?&nbsp;</div> </div>
-  <a href="#" target="_blank" class="btn bg-primary btn-round text-light btn-lg btn-rised" style="/* font-size: 100%; */height: 8.6vh;margin-bottom:10px;margin-top: 2.5vh;padding: 0;"><div class="example1" style=""><h3>Watch Tutorial! &nbsp;Click Me&nbsp;&nbsp;&nbsp;&nbsp;Watch Tutorial! &nbsp;Click Me&nbsp;&nbsp;&nbsp;&nbsp;Watch Tutorial! &nbsp;Click Me&nbsp;&nbsp;&nbsp;&nbsp;Watch Tutorial! &nbsp;Click Me&nbsp;&nbsp;&nbsp;&nbsp;Watch Tutorial! &nbsp;Click Me&nbsp;&nbsp;&nbsp;&nbsp;</h3></div> </a>
+  <a href="#" target="_blank" ><div class="" style="margin:0 0;display:hidden;width:100%;/* font-size: 11vmin; */color:white;margin-top: 0.7em;"><div style="font-size: 8.8vw;width:100%;    font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;font-family:'Comic Sans MS', sans-serif;white-space: nowrap;background-color: #fcf8e3;color:black;padding: 0 0;">&nbsp;How to use this Site?&nbsp;</div></div></a>
+  <a href="#" target="_blank" class="btn bg-primary btn-round text-light btn-lg btn-rised" style="background-color: #69d0cc!important;color: black!important; height: 8.3vh;margin-bottom:10px;margin-top: 2.5vh;padding: 0;"><h3 style=" font-size: 6vh;" >&nbsp;Watch Tutorial!&nbsp;</h3></a>
   
   <div onclick="document.getElementById('1').click()" id="darrow" class="btn-container-wrapper p-relative d-block  zindex-1" style="text-align: center;position:sticky;top: 93vh;overflow: hidden;margin-bottom: -10;height: 13%;"><a id="a1" onclick="document.getElementById('1').click()" class="btn btn-link btn-lg    scroll align-self-center text-light" href="#1"  style="position: relative;padding-top: 0;/* float: left; *//* clear: both; */">
 <i class="fa fa-angle-down fa-4x text-light"></i></a>
@@ -272,7 +273,7 @@
 
     </div>
 <div style="background-color: #e5e5e5;margin-bottom: 14px;margin-top: 16px;padding: 10 5; ">
-<form style="padding-bottom: 11;background-color: white;margin: 10;margin-top: 36px;margin-bottom: 36px;/* text-shadow: 0px 1px 1px black; */box-shadow: 0 0 12px -3px black;" class="needs-validation " novalidate="">
+<form style="padding-bottom: 13vh;background-color: white;margin: 10;margin-top: 36px;margin-bottom: 36px;/* text-shadow: 0px 1px 1px black; */box-shadow: 0 0 12px -3px black;" class="needs-validation " novalidate="">
   <div class="form-group" style="
     padding-top: 20;
     margin-left: 11px;
@@ -286,7 +287,7 @@
     </div>
     <input style="background: #e5e5e5;display: inline-block;width: auto;font-size: 4.1vw;" autocomplete="off" placeholder="A Number from 0 to 200" type="number" onkeydown=" if((parseInt(this.value + String.fromCharCode(event.keyCode))<=200&amp;&amp;parseInt(this.value + String.fromCharCode(event.keyCode))>=0)||event.keyCode==8 ||parseInt(this.value + String.fromCharCode(event.keyCode))==''){if(event.keyCode!=190) {} else return false ;}else{return false ;}" class="form-control" id="addno" name="uname" required=""></div>
     <div class="valid-feedback">Valid.</div>
-    <div style="font-size: 4.2vw;width: 100%;margin-top: .25rem;color: #dc3545;" name="error" >Please provide an Integer from 0 to 200.</div>
+    <div style="font-size: 4.2vw; width: 100%; margin-top: 0.25rem; color: rgb(220, 53, 69); display: none;" name="error">Please provide an Integer from 0 to 200.</div>
   </div>
   <div class="form-group" style="
     padding-top: 20;
@@ -294,43 +295,25 @@
     margin-top: 21px;
     margin-right: 10px;
 ">
-    <label style="font-size: 5.2vw;" for="pwd">Your Name with Initial <strong>:</strong> <br><i>(e.g:  S.Kamal )</i> </label>
+    <label style="font-size: 5.2vw;" for="pwd">Your Name with Initial <strong>:</strong> <br><i>(e.g: T.Dithusan )</i> </label>
     <input type="text" class="form-control" id="name" placeholder="Your Name" onkeydown=" if((event.keyCode >= 65 &amp;&amp; event.keyCode <= 90) || event.keyCode == 8|| event.keyCode == 17|| event.keyCode == 16|| event.keyCode == 190){}else return false; " name="pswd" required="" style="
     background-color: #e5e5e5;width: 94%;margin-left: 11px;
 ">
     <div class="valid-feedback">Valid.</div>
-    <div style="font-size: 4.2vw;width: 100%;margin-top: .25rem;color: #dc3545;" name="error" >Provide your name with <strong>Initial</strong>.</div>
+    <div style="font-size: 4.2vw; width: 100%; margin-top: 0.25rem; color: rgb(220, 53, 69); display: none;" name="error">Provide your name with <strong>Initial</strong>.</div>
   </div>
 
-   <button style="font-size: 6.3vw;padding-top:0px;margin: 10px;margin-left: 21px;/* margin-bottom: -22px; */display: block;/* padding: 20px; */width: 26vw;height: 12vw;" type="submit" onclick="event.preventDefault();formSubmit()" class="btn btn-primary ">Submit</button>
-</form></div>
+   <div style=""><button style=" display: inline-block;float: left;font-size: 6.3vw;padding-top:0px;margin: 10px;margin-left: 21px;/* margin-bottom: -22px; *//*display: inline-block;*//* padding: 20px; */width: 26vw;height: 12vw;" type="submit" onclick="event.preventDefault();formSubmit()" class="btn btn-primary ">Submit</button><div style="display: none !important;margin-left: 7vw;margin-top: 10px;display: inline-block;float: left;" class="loader"></div><div style="
+        display: none !important;font-size: 5.5vw;
+    padding-left: 53vw;
+    padding-top: 17px;
+">Please Wait...</div></div>
+</form>
+
+</div>
 
 
 
-<div >After looking around a lot, this is what finally worked for me:
-
-Find/locate div in your dom which has scroll bar. For me, it looked like this : "div class="table_body table_body_div" scroll_top="0" scroll_left="0" style="width: 1263px; height: 499px;"
-
-I located it with this xpath : //div[@class='table_body table_body_div']
-
-Used JavaScript to execute scrolling like this : (JavascriptExecutor) driver).executeScript("arguments[0].scrollLeft = arguments[1];",element,2000);
-
-2000 is the no of pixels I wanted to scroll towards the right. Use scrollTop instead of scrollLeft if you want to scroll your div down.
-
-Note : I tried using scrollIntoView but it didn't work properly because my webpage had multiple divs. It will work if you have only one main window where focus lies. This is the best solution I have come across if you don't want to use jQuery which I didn't want to.
-
-shareeditAfter looking around a lot, this is what finally worked for me:
-
-Find/locate div in your dom which has scroll bar. For me, it looked like this : "div class="table_body table_body_div" scroll_top="0" scroll_left="0" style="width: 1263px; height: 499px;"
-
-I located it with this xpath : //div[@class='table_body table_body_div']
-
-Used JavaScript to execute scrolling like this : (JavascriptExecutor) driver).executeScript("arguments[0].scrollLeft = arguments[1];",element,2000);
-
-2000 is the no of pixels I wanted to scroll towards the right. Use scrollTop instead of scrollLeft if you want to scroll your div down.
-
-Note : I tried using scrollIntoView but it didn't work properly because my webpage had multiple divs. It will work if you have only one main window where focus lies. This is the best solution I have come across if you don't want to use jQuery which I didn't want to.
-
-shareedit</div>
+<div ></div>
     </body>
     </html>

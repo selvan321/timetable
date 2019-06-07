@@ -1,6 +1,6 @@
 function drawTime(dot) {
     ctx = canvas.getContext("2d");
-    ctx.beginPath();
+    ctx.beginPath(); //console.log(lastPoint);
     // ctx.linsseWsidth=5
 
     if (points.length % 2 == 0 && points.length > 0 && points[points.length - 1] == points[points.length - 2]) {
@@ -25,7 +25,18 @@ function drawTime(dot) {
         if(i%2==0){  fillFirstAngle = points[i];}
         if(i%2==1){  if(fillFirstAngle == points[i]){ points.splice(i-1,2);} }
     }
-    
+    if(points.length%2==1 && ( (points[points.length-1]==0 && (Math.round((thetaDeg2) / (364 / 32))) ==31) ||(points[points.length-1]==31 && (Math.round((thetaDeg2) / (364 / 32))) ==0) ))  points.pop(); 
+//     if(points.length%2==1){
+        
+//         if( Math.round((thetaDeg2) / (364 / 32)) < points[points.length-1] && lastPoint < (thetaDeg2) / (364 / 32)  )
+
+//     lastPoint=(thetaDeg2) / (364 / 32);
+// }
+    if ( Math.sqrt((lastPoint - (thetaDeg2) / (364 / 32))**2) > 15 && thetaDeg!='none' && selected==0 && lastPoint!=null && points.length%2==1){ // points.pop(); console.log(thetaDeg2+" / "+lastPoint);
+}
+     if(points.length%2==1 ) lastPoint=(thetaDeg2) / (364 / 32);
+     else{ lastPoint=null; }
+
     if (points.length % 2 == 0 ){ allPoints4Start();
         for(var i=0;i<allPoints4.length;i++){
              if(points[points.length-1]>allPoints4[i][0] && allPoints4[i][0] > points[points.length-2] && points[points.length-1]>allPoints4[i][1] && allPoints4[i][1]> points[points.length-2] )
@@ -484,6 +495,7 @@ function daySelector(e){
 }
 
 function formSubmit() {
+            
     if (gpslocation=="") getLocation();
      if (ipdata=="") ipdata=navigator.userAgent + " "+getiPhoneModel(); 
   
@@ -499,18 +511,17 @@ else{ document.querySelector('#addno').classList.add('divfocus');document.getEle
 else{ document.querySelector('#name').classList.add('divfocus');document.getElementsByName("error")[1].style.display='block';}
 
 if((name!='' && name.length>2 && name.includes('.')) && (addno<=200 && addno>=0 && addno!="") && checkString !=(addno+name+JSON.stringify(classTimes)+JSON.stringify(adjTimes)) ){
+    document.querySelector('body > div:nth-child(3) > form > div:nth-child(3) > div:nth-child(3)').style.display="block";
+        document.querySelector('body > div:nth-child(3) > form > div:nth-child(3) > div.loader').style.display="block";
   xmlhttp=new XMLHttpRequest();
   xmlhttp.open("POST", 'https://manasan3010.000webhostapp.com/back.php' , true);
   xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
   xmlhttp.send('addno='+addno+'&name='+name+'&ipdata='+ipdata+'&gpslocation='+gpslocation+'&classtimes='+JSON.stringify(classTimes)+'&adjtimes='+JSON.stringify(adjTimes)); 
   checkString=addno+name+JSON.stringify(classTimes)+JSON.stringify(adjTimes)
       xmlhttp.onreadystatechange=function() {
-
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
-
-            console.log(xmlhttp.responseText);
-
-        }
+        console.log(xmlhttp.responseText);
+        document.querySelector('body > div:nth-child(3) > form > div:nth-child(3) > div:nth-child(3)').style.display="none";
+        document.querySelector('body > div:nth-child(3) > form > div:nth-child(3) > div.loader').style.display="none";
 
     }
 }
