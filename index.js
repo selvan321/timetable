@@ -1,3 +1,5 @@
+// TO-DO: Make School time unclickable undraggable unhoverable
+
 function drawTime(dot) {
     ctx = canvas.getContext("2d");
     ctx.beginPath(); //console.log(lastPoint);
@@ -25,13 +27,7 @@ function drawTime(dot) {
         if(i%2==0){  fillFirstAngle = points[i];}
         if(i%2==1){  if(fillFirstAngle == points[i]){ points.splice(i-1,2);} }
     }
-    // if(points.length%2==1 && ( (points[points.length-1]==0 && (Math.round((thetaDeg2) / (364 / 32))) ==31) ||(points[points.length-1]==31 && (Math.round((thetaDeg2) / (364 / 32))) ==0) ))  points.pop(); 
-//     if(points.length%2==1){
-        
-//         if( Math.round((thetaDeg2) / (364 / 32)) < points[points.length-1] && lastPoint < (thetaDeg2) / (364 / 32)  )
-
-//     lastPoint=(thetaDeg2) / (364 / 32);
-// }
+ 
     if ( Math.sqrt((lastPoint - (thetaDeg2) / (364 / 32))**2) > 15  && selected==0 && lastPoint!=null && points.length%2==1){ points.pop(); 
 }
      if(points.length%2==1 ) lastPoint=(thetaDeg2) / (364 / 32);

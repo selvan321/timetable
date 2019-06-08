@@ -153,8 +153,8 @@
 
       if(thetaDeg>267 && 272>thetaDeg){thetaDeg+=3}
       thetaDeg2=thetaDeg+90;if (thetaDeg2 >360){thetaDeg2 -=360;}//console.log(thetaDeg)
-      if((Math.sqrt((currX-x1)**2+(currY-y1)**2)>0 && Math.sqrt((currX-x1)**2+(currY-y1)**2)<r1)){ //console.log(Math.sqrt((currX-x1)**2+(currY-y1)**2))
-      
+      if(Math.sqrt((currX-x1)**2+(currY-y1)**2)>0 && Math.sqrt((currX-x1)**2+(currY-y1)**2)<r1  && !(currentDay<5&&boxChecked==false&&Math.round((thetaDeg2)/(364/32))>3 && Math.round((thetaDeg2)/(364/32)) < 15 ) ){ 
+       
 
       if(  (dot.type === 'mousedown' ||  dot.type === 'touchstart' )&& (true)){//mouseDown
          
@@ -176,7 +176,7 @@
 
 
     function undo() {
-      points.pop();points.pop();thetaDeg='none';thetaDeg2=-1;can.width = can.width;drawTime();
+      points.pop();points.pop();points.length==0&&currentDay<5&&boxChecked==false ? points.push(3,15) : null; thetaDeg='none';thetaDeg2=-1;can.width = can.width;drawTime();
     }
 
     function clearAll() {
