@@ -25,14 +25,14 @@ function drawTime(dot) {
         if(i%2==0){  fillFirstAngle = points[i];}
         if(i%2==1){  if(fillFirstAngle == points[i]){ points.splice(i-1,2);} }
     }
-    if(points.length%2==1 && ( (points[points.length-1]==0 && (Math.round((thetaDeg2) / (364 / 32))) ==31) ||(points[points.length-1]==31 && (Math.round((thetaDeg2) / (364 / 32))) ==0) ))  points.pop(); 
+    // if(points.length%2==1 && ( (points[points.length-1]==0 && (Math.round((thetaDeg2) / (364 / 32))) ==31) ||(points[points.length-1]==31 && (Math.round((thetaDeg2) / (364 / 32))) ==0) ))  points.pop(); 
 //     if(points.length%2==1){
         
 //         if( Math.round((thetaDeg2) / (364 / 32)) < points[points.length-1] && lastPoint < (thetaDeg2) / (364 / 32)  )
 
 //     lastPoint=(thetaDeg2) / (364 / 32);
 // }
-    if ( Math.sqrt((lastPoint - (thetaDeg2) / (364 / 32))**2) > 15 && thetaDeg!='none' && selected==0 && lastPoint!=null && points.length%2==1){ // points.pop(); console.log(thetaDeg2+" / "+lastPoint);
+    if ( Math.sqrt((lastPoint - (thetaDeg2) / (364 / 32))**2) > 15  && selected==0 && lastPoint!=null && points.length%2==1){ points.pop(); 
 }
      if(points.length%2==1 ) lastPoint=(thetaDeg2) / (364 / 32);
      else{ lastPoint=null; }
@@ -262,7 +262,6 @@ if (i % 2 == 0 && i!=oldPoints.length-1) {
     ctx.fill();
     ctx.closePath();
     ctx.restore();
-
     for (var i = 0; i < 32; i++) { //CLOCK NUMBERS
         if (angle[i] > 180) {
             rotateAngle = 3.14;
@@ -284,23 +283,23 @@ if (i % 2 == 0 && i!=oldPoints.length-1) {
         if ( (thetaDeg != 'none' )|| points.length%2==1) {
             
             
-            if ((Math.round((thetaDeg2) / (364 / 32))) == i && hovered == 0 && selected == 0 && dot.type != 'touchend') {
-                fontBold = 1000;
-                fontSize = r3 * 0.2082;
+            if ((Math.round((thetaDeg2) / (364 / 32))) == i && selected == 0 && hovered == 0 && dot.type !="touchend" ) {
+                fontBold = 900;
+                fontSize = r3 * 0.3082;
             } else {
                 fontSize = r3 * 0.1582;
             }
         }
-        for (var c = points.length - 1; c >= 0; c--) {
-            if (points[c] == i){
-                fontBold = 1000;
-                if(points.length-1==c && points.length%2==1&& selected == 0){ fontSize = r3 * 0.2582;}
+        for (var c = 0; c < points.length ; c++) {
+            if (points[c] == i){fontSize = r3 *  0.2382;
+                fontBold = 900;
+                if(points.length-1==c && points.length%2==1&& selected == 0){ fontBold = 900;fontSize = r3 * 0.3082;}
             }
-            if (points[points.length - 1] == i && selected != 0)
-                fontBold = 1;
+            if (points[points.length - 1] == i && selected != 0){ fontBold = 1;fontSize = r3 * 0.1582; }
         }
-        if(selected[0]==i || selected[1]==i)fontSize = r3 * 0.2082;
+        if(selected[0]==i || selected[1]==i)fontSize = r3 * 0.2882;
 
+// fontBold = 500;
         ctx.beginPath();
         ctx.font = fontBold + " " + fontSize + "px arial";
         ctx.textAlign = "center";

@@ -1,4 +1,4 @@
-
+console.log("2");
 
   function getiPhoneModel() {
     // Create a canvas element which can be used to retrieve information about the GPU.

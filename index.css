@@ -183,3 +183,118 @@ button span {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.btn:not(:active){
+  box-shadow: none !important;
+}
+.btn:active{
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.5);
+}
+.btn-primary:not(:active){
+  background-color: #007bff !important;
+}
+
+ .btn.btn-success.btn-block.btn-days:not(:active){
+   background-color: #28a745 !important;
+}
+..btn.btn-success.btn-block.btn-days:active{
+  background-color: #218838 !important;
+}
+
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 5vh;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+  height: 90vh;
+  width:90vw;
+  background-color: #f1f1f1;
+}
+
+.close {
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  width: 72px;
+  height: 72px;
+  opacity: 1 !important;
+      position: relative;
+    top: 10;
+    right: 20;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  left: 33px;
+  content: ' ';
+  height: 65px;
+  width: 6px;
+  background-color: #626262 !important;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+
+a:hover {
+    text-decoration: none;
+}
+@media (min-width: 620px) {
+  .wel{
+    font-size: 105px !important;
+  }
+    .wel +div{
+    font-size: 60px !important;
+     margin-top: -10px !important;
+  }
+ .wel + div+ div+ div{
+    font-size: 35px !important;
+        margin-top: -10px !important; 
+  } 
+  .wel + div+ div{
+    font-size: 50px !important;
+         
+  }
+
+.welMain a:first-of-type>div{
+    font-size:  50px !important;
+        padding:0 calc(-69px + 17vw) !important;
+  }
+
+.welMain a:nth-of-type(2)>h3{
+    font-size:  60px !important;
+  }
+  .welMain a:nth-of-type(2){
+    height: 11.3vh !important;
+  }
+
+
+}
+@media (min-width: 960px) {
+  .welMain a:first-of-type>div{
+    font-size:  50px !important;
+        padding:0 calc(20px + 19vw) !important;
+  }
+}
+
+a.btn.bg-primary.btn-round.text-light.btn-lg.btn-rised:hover{
+  box-shadow: 0px 0px 12px 5px #2196F3 !important;
+
+}
+a{
+  cursor: pointer;
+}
+@media (hover: none) {
+a.btn.bg-primary.btn-round.text-light.btn-lg.btn-rised:hover{
+  box-shadow: 0px 0px 12px 5px #2196F3 !important;
+}
+a.btn.bg-primary.btn-round.text-light.btn-lg.btn-rised:not(:active){
+  box-shadow: 0px 0px 0px 0px #2196F3 !important;
+}
+}

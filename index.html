@@ -1,6 +1,10 @@
 <html>
 <head>  
   <title>Class-Time • Manager •</title>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
   <meta charset="UTF-8">
   <meta name="keywords" content="HTML,CSS,XML,JavaScript">
   <meta name="author" content="Manasan">
@@ -202,17 +206,31 @@
     <body onload="init()">
 
 
-<div class="" style="overflow: hidden;padding: 10px;text-align: center;background: #343a40;position:relative;top:0px;width: 100vw;height: 100vh;font-size: 1vmax;">
-  <div class="" style="/* margin: 175px; */width: 96vw;font-size: 22vw;color:white;margin-top: -0.3em;margin-left: -1.1vw;text-align: center;">Welcome </div><div id="to" class="display-4" style="font-size: 13vw; color: white; margin-top: -2.604px;">to </div>
-  <div class="" style="font-size: 6vh;color:white;border:4px solid white;margin-top: 3.5vh;">Class-Time Manager v1.0</div>
+<div class="welMain" style="overflow: hidden;padding: 10px;text-align: center;background: #343a40;position:relative;top:0px;width: 100vw;height: 100vh;font-size: 1vmax;">
+
+  <div class="wel" style="/* margin: 175px; */width: 96vw;font-size: 22vmin;color:white;margin-top: -0.3em;margin-left: -1.1vw;text-align: center;">Welcome </div><div id="to" class="display-4" style="font-size: 13vmin; color: white; margin-top: -2.604px;">to </div>
+  <div class="" style="font-size: 6vmax;color:white;border:4px solid white;margin-top: 3.5vh;">Class-Time Manager v1.0</div>
   <div class="" style="padding-top: 2.4vmax;font-size: 4.4vmax;color:white;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif;">Designed for Physics Group Classes (K.Selvan) </div>
   <div class="" style="margin: 3vh 1.1vw;color:white;border-top:4px white dashed;"></div>
-  <a href="#" target="_blank" ><div class="" style="margin:0 0;display:hidden;width:100%;/* font-size: 11vmin; */color:white;margin-top: 0.7em;"><div style="font-size: 8.8vw;width:100%;    font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;font-family:'Comic Sans MS', sans-serif;white-space: nowrap;background-color: #fcf8e3;color:black;padding: 0 0;">&nbsp;How to use this Site?&nbsp;</div></div></a>
-  <a href="#" target="_blank" class="btn bg-primary btn-round text-light btn-lg btn-rised" style="background-color: #69d0cc!important;color: black!important; height: 8.3vh;margin-bottom:10px;margin-top: 2.5vh;padding: 0;"><h3 style=" font-size: 6vh;" >&nbsp;Watch Tutorial!&nbsp;</h3></a>
+  <a  id="" onclick=" document.getElementById('form-popup').style.display ='block' "><div class="" style="font-size: 8.8vmin;margin:0 0;display:hidden;width:100%;/* font-size: 11vmin; */color:white;margin-top: 0.7em;"><div style="width:100%;    font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;font-family:'Comic Sans MS', sans-serif;white-space: nowrap;background-color: #fcf8e3;color:black;padding: 0 0;">&nbsp;How to use this Site?&nbsp;</div></div></a>
+  <a  class="btn bg-primary btn-round text-light btn-lg btn-rised" style="background-color: #69d0cc!important;color: black!important; height: 8.3vh;margin-bottom:10px;margin-top: 2.5vh;padding: 0;" onclick=" document.getElementById('form-popup').style.display ='block' "><h3 style=" font-size: 6vh;outline-width: 0px;" >&nbsp;Watch Tutorial!&nbsp;</h3></a>
   
   <div onclick="document.getElementById('1').click()" id="darrow" class="btn-container-wrapper p-relative d-block  zindex-1" style="text-align: center;position:sticky;top: 93vh;overflow: hidden;margin-bottom: -10;height: 13%;"><a id="a1" onclick="document.getElementById('1').click()" class="btn btn-link btn-lg    scroll align-self-center text-light" href="#1"  style="position: relative;padding-top: 0;/* float: left; *//* clear: both; */">
-<i class="fa fa-angle-down fa-4x text-light"></i></a>
-              </div></div>
+<i class="fa fa-angle-down fa-4x text-light"></i></a></div></div>
+              
+
+<div id="form-popup" class="form-popup">
+  <div style="">
+    <div class="close" style="position: relative;top: 5;right: 0;" onclick="document.getElementById('form-popup').style.display ='none'"></div>
+ <div  onclick="window.open('https://www.youtube.com/watch?v=LPnLANo6_yo');" style="white-space: pre-line;font-size: calc(26px + 3.5vw);;width:95%;height: 35vh;margin:0 0 20 2.5vw;" class="btn  btn-warning">
+   Watch Tutorial in Tamil
+ </div>
+ <div onclick="window.open('https://www.youtube.com/watch?v=cjxPvMZ1b_I');" style="white-space: pre-line;font-size: calc(26px + 3.5vw);;width:95%;height: 35vh;margin:0 0 10 2.5vw;" class="btn  btn-warning">
+   Watch Tutorial in English
+ </div>
+  </div>
+</div>
+
  <div class='grid-container' >
 
 <button type="button" id='1' onclick="daySelector(event)"  class=" btn btn-success  btn-block btn-days"><span style="
@@ -256,7 +274,7 @@
 
   <input type="checkbox" name='check2' onclick="if(this.checked){document.getElementsByName('check1')[0].checked=false; classTimes[currentDay]=points; points=adjTimes[currentDay]; oldPoints=classTimes[currentDay];boxChecked=true;can.width = can.width; drawTime(); }else{document.getElementsByName('check1')[0].checked=true;adjTimes[currentDay]=points;points=classTimes[currentDay]; oldPoints=adjTimes[currentDay];boxChecked=false; can.width = can.width; drawTime();}" id="primary1" />
 
-  <label for="primary1">Mark time which is not FREE but can be <strong>Adjusted</strong> upon request</label>
+  <label id="qwe" for="primary1">Mark time which is not FREE but can be <strong>Adjusted</strong> upon request</label>
 
 </div>
 
