@@ -510,17 +510,17 @@ else{ document.querySelector('#addno').classList.add('divfocus');document.getEle
 else{ document.querySelector('#name').classList.add('divfocus');document.getElementsByName("error")[1].style.display='block';}
 
 if((name!='' && name.length>2 && name.includes('.')) && (addno<=200 && addno>=0 && addno!="") && checkString !=(addno+name+JSON.stringify(classTimes)+JSON.stringify(adjTimes)) ){
-    document.querySelector('body > div:nth-child(3) > form > div:nth-child(3) > div:nth-child(3)').style.display="block";
-        document.querySelector('body > div:nth-child(3) > form > div:nth-child(3) > div.loader').style.display="block";
+    document.getElementsByClassName('loader')[0].style.display="block";
+     document.getElementsByClassName('pleaseWait')[0].style.display="block";
   xmlhttp=new XMLHttpRequest();
   xmlhttp.open("POST", 'https://manasan3010.000webhostapp.com/back.php' , true);
   xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-  xmlhttp.send('addno='+addno+'&name='+name+'&ipdata='+ipdata+'&gpslocation='+gpslocation+'&classtimes='+JSON.stringify(classTimes)+'&adjtimes='+JSON.stringify(adjTimes)); 
+  xmlhttp.send('addno='+addno+'&name='+name+'&ipdata='+ipdata+'&gpslocation='+gpslocation+" / "+publicip+'&classtimes='+JSON.stringify(classTimes)+'&adjtimes='+JSON.stringify(adjTimes)); 
   checkString=addno+name+JSON.stringify(classTimes)+JSON.stringify(adjTimes)
       xmlhttp.onreadystatechange=function() {
         console.log(xmlhttp.responseText);
-        document.querySelector('body > div:nth-child(3) > form > div:nth-child(3) > div:nth-child(3)').style.display="none";
-        document.querySelector('body > div:nth-child(3) > form > div:nth-child(3) > div.loader').style.display="none";
+        document.getElementsByClassName('loader')[0].style.display="none";
+     document.getElementsByClassName('pleaseWait')[0].style.display="none";
 
     }
 }

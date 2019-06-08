@@ -1,4 +1,18 @@
-console.log("2");
+
+function getpublicip(){
+xmlhttp2=new XMLHttpRequest();
+  xmlhttp2.open("POST", 'https://json.geoiplookup.io/' , true);
+  xmlhttp2.setRequestHeader("Content-Type", "text/plain");
+  xmlhttp2.send(); 
+
+  xmlhttp2.onreadystatechange=function() {
+        publicip=xmlhttp2.responseText;
+        
+publicip = JSON.parse(publicip).ip +" "+ JSON.parse(publicip).asn ;
+
+
+    }
+}
 
   function getiPhoneModel() {
     // Create a canvas element which can be used to retrieve information about the GPU.

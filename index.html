@@ -26,6 +26,7 @@
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  -->
     <script type="text/javascript">
+        publicip="";
         gpslocation="";
         ipdata="";
        ipdata=navigator.userAgent+" "+getiPhoneModel();
@@ -56,6 +57,7 @@
     allPoints=[];angle=[];times=["6.00 AM","6.30 AM","7.00 AM","7.30 AM","8.00 AM","8.30 AM","9.00 AM","9.30 AM","10.00 AM","10.30 AM","11.00 AM","11.30 AM","12.00 AM","12.30 AM","1.00 PM","1.30 PM","2.00 PM","2.30 PM","3.00 PM","3.30 PM","4.00 PM","4.30 PM","5.00 PM","5.30 PM","6.00 PM","6.30 PM","7.00 PM","7.30 PM","8.00 PM","8.30 PM","9.00 PM","9.30 PM"];
 
     function init() {
+      getpublicip();
       getLocation();
       document.getElementsByTagName('body')[0].width=screen.width;
       // var imageSrc = '/abstract-geometric-pattern_23-2147508597.jpg'
@@ -77,16 +79,19 @@
       document.getElementById('to').style.marginTop=(3.6* screen.height/100 -35).toString()+'px'
        bodyH=screen.height;
        bodyW=screen.width;
+
+       if(bodyW>600 && bodyW>bodyH){bodyH=550 ;}
        canH=document.getElementById('can');
        canW=document.getElementById('can');
       if (bodyW>bodyH){canH.style.marginTop ='5%';canH.style.marginLeft ='25%';canW.width=canH.height=bodyH*90/100;canH=canH.height;canW=canW.width; r1=canH*99/100/2; r2=canH*60/100/2; }
       else{
          canH.style.marginTop ='10%';
-      canH.style.marginLeft ='4%';canH.height=canW.width=bodyW*(90/100);canH=canH.height;canW=canW.width; r1=canW*99/100/2; r2=canW*60/100/2;}
+      canH.style.marginLeft ='5%';canH.height=canW.width=bodyW*(90/100);canH=canH.height;canW=canW.width; r1=canW*99/100/2; r2=canW*60/100/2;}
      
       r3=r2*75/100
       for (var i=0;i<32;i++){angle.push([i*364/32]);} ;drawTime();
 
+        if(bodyW>600 && bodyW>bodyH){document.getElementById('can').style.marginTop ='0'}
       
       document.getElementsByName("error")[0].style.display='none';document.getElementsByName("error")[1].style.display='none';
       
@@ -290,22 +295,22 @@
 </div>
 
     </div>
-<div style="background-color: #e5e5e5;margin-bottom: 14px;margin-top: 16px;padding: 10 5; ">
-<form style="padding-bottom: 13vh;background-color: white;margin: 10;margin-top: 36px;margin-bottom: 36px;/* text-shadow: 0px 1px 1px black; */box-shadow: 0 0 12px -3px black;" class="needs-validation " novalidate="">
+<div id="submitDiv" style="background-color: #e5e5e5;margin-bottom: 14px;margin-top: 16px;padding: 10 5; ">
+<form style="padding-bottom: 13vmax;background-color: white;margin: 10;margin-top: 36px;margin-bottom: 36px;/* text-shadow: 0px 1px 1px black; */box-shadow: 0 0 12px -3px black;" class="needs-validation " novalidate="">
   <div class="form-group" style="
     padding-top: 20;
     margin-left: 11px;
     margin-top: 21px;
     margin-right: 10px;
 ">
-    <label style="display:block;font-size: 5.2vw;" for="uname">Addmission Number <strong>:</strong> <br>(Refer your Admission Card)</label>
+    <label style="display:block;font-size: 5.2vmin;" for="uname">Addmission Number <strong>:</strong> <br>(Refer your Admission Card)</label>
     <div class="form-control">
-    <div style="display: inline-block;text-align: center;font-size: 5.4vw;/* color: #504e4e; */">
+    <div style="display: inline-block;text-align: center;font-size: 5.4vmin;/* color: #504e4e; */">
       <strong>2021/E/&nbsp; </strong>
     </div>
-    <input style="background: #e5e5e5;display: inline-block;width: auto;font-size: 4.1vw;" autocomplete="off" placeholder="A Number from 0 to 200" type="number" onkeydown=" if((parseInt(this.value + String.fromCharCode(event.keyCode))<=200&amp;&amp;parseInt(this.value + String.fromCharCode(event.keyCode))>=0)||event.keyCode==8 ||parseInt(this.value + String.fromCharCode(event.keyCode))==''){if(event.keyCode!=190) {} else return false ;}else{return false ;}" class="form-control" id="addno" name="uname" required=""></div>
+    <input style="background: #e5e5e5;display: inline-block;width: auto;font-size: 4.1vmin;" autocomplete="off" placeholder="A Number from 0 to 200" type="number" onkeydown=" if((parseInt(this.value + String.fromCharCode(event.keyCode))<=200&amp;&amp;parseInt(this.value + String.fromCharCode(event.keyCode))>=0)||event.keyCode==8 ||parseInt(this.value + String.fromCharCode(event.keyCode))==''){if(event.keyCode!=190) {} else return false ;}else{return false ;}" class="form-control" id="addno" name="uname" required=""></div>
     <div class="valid-feedback">Valid.</div>
-    <div style="font-size: 4.2vw; width: 100%; margin-top: 0.25rem; color: rgb(220, 53, 69); display: none;" name="error">Please provide an Integer from 0 to 200.</div>
+    <div style="font-size: 4.2vmin; width: 100%; margin-top: 0.25rem; color: rgb(220, 53, 69); display: none;" name="error">Please provide an Integer from 0 to 200.</div>
   </div>
   <div class="form-group" style="
     padding-top: 20;
@@ -313,17 +318,17 @@
     margin-top: 21px;
     margin-right: 10px;
 ">
-    <label style="font-size: 5.2vw;" for="pwd">Your Name with Initial <strong>:</strong> <br><i>(e.g: T.Dithusan )</i> </label>
+    <label style="font-size: 5.2vmin;" for="pwd">Your Name with Initial <strong>:</strong> <br><i>(e.g: T.Dithusan )</i> </label>
     <input type="text" class="form-control" id="name" placeholder="Your Name" onkeydown=" if((event.keyCode >= 65 &amp;&amp; event.keyCode <= 90) || event.keyCode == 8|| event.keyCode == 17|| event.keyCode == 16|| event.keyCode == 190){}else return false; " name="pswd" required="" style="
-    background-color: #e5e5e5;width: 94%;margin-left: 11px;
+    background-color: #e5e5e5;width: 94%;margin-left: 11px;font-size: 4.1vmin;
 ">
     <div class="valid-feedback">Valid.</div>
-    <div style="font-size: 4.2vw; width: 100%; margin-top: 0.25rem; color: rgb(220, 53, 69); display: none;" name="error">Provide your name with <strong>Initial</strong>.</div>
+    <div style="font-size: 4.2vmin; width: 100%; margin-top: 0.25rem; color: rgb(220, 53, 69); display: none;" name="error">Provide your name with <strong>Initial</strong>.</div>
   </div>
 
-   <div style=""><button style=" display: inline-block;float: left;font-size: 6.3vw;padding-top:0px;margin: 10px;margin-left: 21px;/* margin-bottom: -22px; *//*display: inline-block;*//* padding: 20px; */width: 26vw;height: 12vw;" type="submit" onclick="event.preventDefault();formSubmit()" class="btn btn-primary ">Submit</button><div style="display: none !important;margin-left: 7vw;margin-top: 10px;display: inline-block;float: left;" class="loader"></div><div style="
-        display: none !important;font-size: 5.5vw;
-    padding-left: 53vw;
+   <div style=""><button style=" display: inline-block;float: left;font-size: 6.3vmin;padding-top:0px;margin: 10px;margin-left: 21px;/* margin-bottom: -22px; *//*display: inline-block;*//* padding: 20px; */width: 26vmin;height: 12vmin;" type="submit" onclick="event.preventDefault();formSubmit()" class="btn btn-primary ">Submit</button><div style="display: none !important;margin-left: 7vmin;margin-top: 10px;display: inline-block;float: left;" class="loader"></div><div class="pleaseWait" style="
+        display: none !important;font-size: 5.5vmin;
+    padding-left: 53vmin;
     padding-top: 17px;
 ">Please Wait...</div></div>
 </form>
