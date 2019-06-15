@@ -247,7 +247,7 @@ a:hover {
 }
 @media (min-width: 620px) {
   .wel{
-    font-size: 105px !important;
+    font-size: 115px !important;
   }
     .wel +div{
     font-size: 60px !important;
@@ -297,4 +297,175 @@ a.btn.bg-primary.btn-round.text-light.btn-lg.btn-rised:hover{
 a.btn.bg-primary.btn-round.text-light.btn-lg.btn-rised:not(:active){
   box-shadow: 0px 0px 0px 0px #2196F3 !important;
 }
+}
+/*body {
+  background: black;
+  font-family: 'Varela', sans-serif;
+}*/
+
+.glitch {
+  color: white;
+  position: relative;
+  width: 400px;
+  margin: 0 auto;
+  margin-left: -1.1vw;
+  /* left: 1.1vw; */
+}
+
+@keyframes noise-anim {
+  0% {
+    clip: rect(21px, 9999px, 41px, 0);
+  }
+  5% {
+    clip: rect(86px, 9999px, 67px, 0);
+  }
+  10% {
+    clip: rect(38px, 9999px, 13px, 0);
+  }
+  15% {
+    clip: rect(70px, 9999px, 5px, 0);
+  }
+  20% {
+    clip: rect(20px, 9999px, 37px, 0);
+  }
+  25% {
+    clip: rect(92px, 9999px, 86px, 0);
+  }
+  30% {
+    clip: rect(57px, 9999px, 66px, 0);
+  }
+  35% {
+    clip: rect(13px, 9999px, 28px, 0);
+  }
+  40% {
+    clip: rect(30px, 9999px, 35px, 0);
+  }
+  45% {
+    clip: rect(15px, 9999px, 74px, 0);
+  }
+  50% {
+    clip: rect(48px, 9999px, 75px, 0);
+  }
+  55% {
+    clip: rect(32px, 9999px, 74px, 0);
+  }
+  60% {
+    clip: rect(100px, 9999px, 78px, 0);
+  }
+  65% {
+    clip: rect(11px, 9999px, 22px, 0);
+  }
+  70% {
+    clip: rect(78px, 9999px, 34px, 0);
+  }
+  75% {
+    clip: rect(35px, 9999px, 20px, 0);
+  }
+  80% {
+    clip: rect(48px, 9999px, 16px, 0);
+  }
+  85% {
+    clip: rect(49px, 9999px, 69px, 0);
+  }
+  90% {
+    clip: rect(53px, 9999px, 26px, 0);
+  }
+  95% {
+    clip: rect(23px, 9999px, 6px, 0);
+  }
+  100% {
+    clip: rect(62px, 9999px, 100px, 0);
+  }
+}
+.glitch:after {
+  margin: auto;
+  content: attr(data-text);
+  position: absolute;
+  /* left: 8.1vw; */
+  text-shadow: -1px 0 red;
+  top: 0;
+  color: white;
+  background: #343a40;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim 2s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim-2 {
+  0% {
+    clip: rect(98px, 9999px, 25px, 0);
+  }
+  5% {
+    clip: rect(98px, 9999px, 40px, 0);
+  }
+  10% {
+    clip: rect(6px, 9999px, 10px, 0);
+  }
+  15% {
+    clip: rect(44px, 9999px, 65px, 0);
+  }
+  20% {
+    clip: rect(50px, 9999px, 68px, 0);
+  }
+  25% {
+    clip: rect(74px, 9999px, 90px, 0);
+  }
+  30% {
+    clip: rect(48px, 9999px, 47px, 0);
+  }
+  35% {
+    clip: rect(37px, 9999px, 22px, 0);
+  }
+  40% {
+    clip: rect(78px, 9999px, 78px, 0);
+  }
+  45% {
+    clip: rect(19px, 9999px, 24px, 0);
+  }
+  50% {
+    clip: rect(94px, 9999px, 6px, 0);
+  }
+  55% {
+    clip: rect(12px, 9999px, 41px, 0);
+  }
+  60% {
+    clip: rect(35px, 9999px, 45px, 0);
+  }
+  65% {
+    clip: rect(18px, 9999px, 81px, 0);
+  }
+  70% {
+    clip: rect(62px, 9999px, 7px, 0);
+  }
+  75% {
+    clip: rect(61px, 9999px, 67px, 0);
+  }
+  80% {
+    clip: rect(27px, 9999px, 38px, 0);
+  }
+  85% {
+    clip: rect(31px, 9999px, 32px, 0);
+  }
+  90% {
+    clip: rect(38px, 9999px, 89px, 0);
+  }
+  95% {
+    clip: rect(98px, 9999px, 73px, 0);
+  }
+  100% {
+    clip: rect(83px, 9999px, 95px, 0);
+  }
+}
+.glitch:before {
+  margin: auto;
+  content: attr(data-text);
+  position: absolute;
+  /* left: 8.1vw; */
+  text-shadow: 1px 0 blue;
+  top: 0;
+  color: white;
+  background: #343a40;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim-2 3s infinite linear alternate-reverse;
 }
